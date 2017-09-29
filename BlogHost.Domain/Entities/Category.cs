@@ -1,16 +1,14 @@
-namespace BlogHost.Domain
-{
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-    [Table("tag")]
-    public partial class Tag
+namespace BlogHost.Domain.Entities
+{
+    [Table("category")]
+    public partial class Category
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Tag()
+        public Category()
         {
             Posts = new HashSet<Post>();
         }
@@ -18,8 +16,11 @@ namespace BlogHost.Domain
         public int ID { get; set; }
 
         [Required]
-        [StringLength(40)]
+        [StringLength(100)]
         public string Name { get; set; }
+
+        [StringLength(255)]
+        public string Description { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Post> Posts { get; set; }

@@ -5,33 +5,28 @@ using System.Web;
 using System.Web.Mvc;
 using BlogHost.Domain;
 
-namespace BlogHost.WebUI.Controllers
+namespace BlogHost.Web.Controllers
 {
     public class HomeController : Controller
     {
         public ActionResult Index()
         {
             BlogContext bc = new BlogContext();
-            /*if (bc.Tags.Count() == 0)
-            {
-                bc.Tags.Add(new Tag() {Name = "oleg"});
-                bc.Tags.Add(new Tag() {Name = "oleg2"});
-                bc.SaveChanges();
-            }*/
+            
             ViewBag.value = bc.Tags;
             return View();
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "A simple blog application.";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "";
 
             return View();
         }

@@ -1,11 +1,10 @@
-namespace BlogHost.Domain
-{
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
+namespace BlogHost.Domain.Entities
+{
     [Table("post")]
     public partial class Post
     {
@@ -16,7 +15,7 @@ namespace BlogHost.Domain
             Tags = new HashSet<Tag>();
         }
 
-        public int id { get; set; }
+        public int ID { get; set; }
 
         [Required]
         [StringLength(100)]

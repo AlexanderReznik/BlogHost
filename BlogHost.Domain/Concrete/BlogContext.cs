@@ -1,3 +1,5 @@
+using BlogHost.Domain.Entities;
+
 namespace BlogHost.Domain
 {
     using System;
@@ -99,8 +101,8 @@ namespace BlogHost.Domain
 
             modelBuilder.Entity<Role>()
                 .HasMany(e => e.Users)
-                .WithRequired(e => e.role)
-                .HasForeignKey(e => e.role_id)
+                .WithRequired(e => e.Role)
+                .HasForeignKey(e => e.RoleId)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Tag>()
@@ -108,19 +110,15 @@ namespace BlogHost.Domain
                 .IsUnicode(false);
 
             modelBuilder.Entity<User>()
-                .Property(e => e.nickname)
+                .Property(e => e.Username)
                 .IsUnicode(false);
 
             modelBuilder.Entity<User>()
-                .Property(e => e.username)
+                .Property(e => e.Password)
                 .IsUnicode(false);
 
             modelBuilder.Entity<User>()
-                .Property(e => e.password)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<User>()
-                .Property(e => e.email)
+                .Property(e => e.Email)
                 .IsUnicode(false);
 
             modelBuilder.Entity<User>()
