@@ -7,9 +7,9 @@ using BlogHost.Domain.Entities;
 
 namespace BlogHost.Domain.Abstract
 {
-    public interface IPostRepository
+    public interface ITagRepository
     {
-        IQueryable<Post> GetAllPosts { get; }
-        Post GetById(int id);
+        IQueryable<Tag> GetAllTags { get; }
+        Tag GetByName(string name);
     }
 }

@@ -8,12 +8,11 @@ using BlogHost.Domain.Entities;
 
 namespace BlogHost.Domain.Concrete
 {
-    public class EFPostRepository : IPostRepository
+    public class EFTagRepository:ITagRepository
     {
         private readonly BlogContext _context = new BlogContext();
 
-        public IQueryable<Post> GetAllPosts => _context.Posts;
-        public Post GetById(int id) => _context.Posts.Find(id);
-        
+        public IQueryable<Tag> GetAllTags => _context.Tags;
+        public Tag GetByName(string name) => _context.Tags.FirstOrDefault(t => t.Name == name);
     }
 }

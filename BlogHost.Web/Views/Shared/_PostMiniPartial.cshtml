@@ -1,0 +1,12 @@
+﻿@model BlogHost.Domain.Entities.Post
+
+<div class="item">
+    <h3>@Html.ActionLink(Model.Title, "Get", "Post", new { id = Model.ID}, null)</h3>
+    Description: @Model.Description
+    <h4>Category: @Model.Category.Name</h4>
+    Tags:
+    @foreach(var t in Model.Tags)
+    {
+        @t.Name @:;
+    }
+</div>

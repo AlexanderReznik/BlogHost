@@ -4,15 +4,7 @@
     ViewBag.Title = "Posts";
 }
 
-@foreach (var p in Model.Posts)
-{
-    <div class="item">
-        <h3>@p.Title</h3>
-        @p.Description
-        <h4>@p.Category.Name</h4>
-        @p.Text
-    </div>
-}
+@{ Html.RenderPartial("_PostList", Model.Posts); }
 
 <div class="pager">
     @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new {page = x}))

@@ -1,0 +1,26 @@
+﻿@model BlogHost.Domain.Entities.Post
+
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<div class="item">
+    <h3>@Model.Title</h3>
+    Description: @Model.Description
+    <h4>Category: @Model.Category.Name</h4>
+    Tags:
+    @foreach (var t in Model.Tags)
+    {
+        @t.Name @:;
+    }
+    <br />
+    <p>
+        @Model.Text
+    </p>
+    <br/>
+    @foreach (var c in Model.Comments)
+    {
+        Html.RenderPartial("_CommentPartial", c);
+    }
+</div>
+

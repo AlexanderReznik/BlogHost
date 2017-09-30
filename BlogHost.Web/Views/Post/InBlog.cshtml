@@ -1,0 +1,11 @@
+﻿@model BlogHost.Web.Models.PostInBlogModel
+
+@{
+    ViewBag.Title = Model.BlogName;
+}
+
+@{ Html.RenderPartial("_PostList", Model.Posts); }
+
+<div class="pager">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("InBlog", new { page = x, blogId = Model.BlogId, blogname = Model.BlogName }))
+</div>

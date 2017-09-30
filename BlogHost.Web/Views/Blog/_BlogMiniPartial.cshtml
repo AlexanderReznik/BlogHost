@@ -1,0 +1,6 @@
+﻿@model BlogHost.Domain.Entities.Blog
+
+<div class="item">
+    <h3>@Html.ActionLink(Model.Name, "InBlog", "Post", new { blogId = Model.id, blogName = Model.Name }, null)</h3>
+    Owner : @Model.User.Username
+</div>

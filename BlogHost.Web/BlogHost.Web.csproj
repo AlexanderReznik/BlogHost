@@ -133,10 +133,15 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PostController.cs" />
+    <Compile Include="Controllers\TagController.cs" />
     <Compile Include="Infrastructure\DependenvyModule.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
+    <Compile Include="Models\BlogListViewModel.cs" />
+    <Compile Include="Models\PostByTagModel.cs" />
+    <Compile Include="Models\PostInBlogModel.cs" />
     <Compile Include="Providers\CustomMembershipProvider.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -161,6 +166,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\app.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -193,6 +199,15 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_PostMiniPartial.cshtml" />
+    <Content Include="Views\Post\PostFull.cshtml" />
+    <Content Include="Views\Shared\_CommentPartial.cshtml" />
+    <Content Include="Views\Blog\List.cshtml" />
+    <Content Include="Views\Blog\_BlogMiniPartial.cshtml" />
+    <Content Include="Views\Shared\_PostList.cshtml" />
+    <Content Include="Views\Post\InBlog.cshtml" />
+    <Content Include="Views\Shared\_Search.cshtml" />
+    <Content Include="Views\Tag\Search.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

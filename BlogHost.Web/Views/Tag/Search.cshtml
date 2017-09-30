@@ -1,0 +1,17 @@
+﻿@model BlogHost.Web.Models.PostByTagModel
+
+@{
+    ViewBag.Title = $"The result of the searching by tag {Model.TagName}";
+}
+
+@if (Model.Posts == null)
+{
+    <H4>I'm sorry. Nothing is found.</H4>
+}
+else
+{
+    Html.RenderPartial("_PostList", Model.Posts);
+    <div class="pager">
+           @Html.PageLinks(Model.PagingInfo, x => Url.Action("Search", new {page = x, tagName = Model.TagName}))
+    </div>
+}

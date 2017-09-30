@@ -1,0 +1,14 @@
+﻿@model BlogHost.Web.Models.BlogListViewModel
+
+@{
+    ViewBag.Title = "Blogs";
+}
+
+@foreach (var p in Model.Posts)
+{
+    Html.RenderPartial("_BlogMiniPartial", p);
+}
+
+<div class="pager">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x }))
+</div>
