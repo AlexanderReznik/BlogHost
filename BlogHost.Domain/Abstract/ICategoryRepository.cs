@@ -7,10 +7,9 @@ using BlogHost.Domain.Entities;
 
 namespace BlogHost.Domain.Abstract
 {
-    public interface IBlogRepository
+    public interface ICategoryRepository
     {
-        IQueryable<Blog> GetAllBlogs { get; }
-
-        void AddBlog(string userName, Blog blog);
+        IQueryable<Category> GetAllCategories { get; }
+        Category GetByName(string name);
     }
 }

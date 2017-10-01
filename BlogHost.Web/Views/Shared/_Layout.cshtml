@@ -31,10 +31,13 @@
         </div>
     </div>
 </div>
-<div class="navbar-right">
-    <H3>Searching by tag</H3>
-    @Html.Partial("_Search")
-</div>
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="navbar-right">
+        <H3>Searching by tag</H3>
+        @Html.Partial("_Search")
+    </div>
+}
 <div class="container body-content">
     <h1>@ViewBag.Title</h1>
     @RenderBody()

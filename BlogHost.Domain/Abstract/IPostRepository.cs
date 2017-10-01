@@ -11,5 +11,8 @@ namespace BlogHost.Domain.Abstract
     {
         IQueryable<Post> GetAllPosts { get; }
         Post GetById(int id);
+        void SavePost(Post post);
+        Post DeletePost(int id);
+        void AddPost(Post post, string[] tags, string category);
     }
 }

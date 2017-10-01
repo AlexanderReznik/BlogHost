@@ -5,7 +5,14 @@
 }
 
 @{ Html.RenderPartial("_PostList", Model.Posts); }
+@if (Model.UserEmail == User.Identity.Name)
+{
+    <br/>
+    <div>
+        @Html.ActionLink("Create new post", "Create", new {blogId = Model.BlogId})
+    </div>
+}
 
 <div class="pager">
-    @Html.PageLinks(Model.PagingInfo, x => Url.Action("InBlog", new { page = x, blogId = Model.BlogId, blogname = Model.BlogName }))
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("InBlog", new { page = x, blogid = Model.BlogId, blogname = Model.BlogName, useremail = Model.UserEmail }))
 </div>

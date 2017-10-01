@@ -38,6 +38,8 @@ namespace BlogHost.Web.Infrastructure
             _ninjectKernel.Bind<IPostRepository>().To<EFPostRepository>();
             _ninjectKernel.Bind<IUserRepository>().To<EFUserRepository>();
             _ninjectKernel.Bind<ITagRepository>().To<EFTagRepository>();
+            _ninjectKernel.Bind<ICommentRepository>().To<EFCommentRepository>();
+            _ninjectKernel.Bind<ICategoryRepository>().To<EFCategoryRepository>();
         }
     }
 }

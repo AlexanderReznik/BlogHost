@@ -17,7 +17,7 @@ namespace BlogHost.Domain.Entities
 
         public int ID { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Title is required!")]
         [StringLength(100)]
         public string Title { get; set; }
 
@@ -29,6 +29,7 @@ namespace BlogHost.Domain.Entities
         public string Description { get; set; }
 
         [Required]
+        [DataType(DataType.MultilineText)]
         public string Text { get; set; }
 
         [Column(TypeName = "datetime2")]

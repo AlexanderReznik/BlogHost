@@ -88,7 +88,7 @@ namespace BlogHost.Domain
                 .HasMany(e => e.Comments)
                 .WithRequired(e => e.Post)
                 .HasForeignKey(e => e.PostId)
-                .WillCascadeOnDelete(false);
+                .WillCascadeOnDelete(true);
 
             modelBuilder.Entity<Post>()
                 .HasMany(e => e.Tags)

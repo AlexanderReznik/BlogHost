@@ -8,7 +8,10 @@
 {
     Html.RenderPartial("_BlogMiniPartial", p);
 }
-
+<br/>
+<div>
+    @Html.ActionLink("Create new blog", "Create")
+</div>
 <div class="pager">
     @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x }))
 </div>

@@ -13,6 +13,17 @@ namespace BlogHost.Domain.Concrete
         private readonly BlogContext _context = new BlogContext();
 
         public IQueryable<Tag> GetAllTags => _context.Tags;
-        public Tag GetByName(string name) => _context.Tags.FirstOrDefault(t => t.Name == name);
+
+        public Tag GetByName(string name)
+        {
+            Tag tag = _context.Tags.FirstOrDefault(t => t.Name == name);
+            if (tag == null)
+            {
+                _context.Tags.Add(new Tag {Name = name});
+                _context.SaveChanges();
+                return _context.Tags.FirstOrDefault(t => t.Name == name);
+            }
+            return tag;
+        }
     }
 }

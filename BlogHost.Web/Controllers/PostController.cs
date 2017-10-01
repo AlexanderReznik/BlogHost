@@ -9,6 +9,7 @@ using BlogHost.Web.Models;
 
 namespace BlogHost.Web.Controllers
 {
+    [Authorize]
     public class PostController : Controller
     {
         private IPostRepository Repository { get; }
@@ -48,10 +49,10 @@ namespace BlogHost.Web.Controllers
             return View("PostFull", post);
         }
 
-        public ActionResult InBlog(int blogId, string blogName, int page = 1)
+        public ActionResult InBlog(int blogid, string blogname, string useremail, int page = 1)
         {
             var posts = Repository.GetAllPosts
-                .Where(p => p.BlogId == blogId)
+                .Where(p => p.BlogId == blogid)
                 .OrderByDescending(p => p.Date);
 
             PostInBlogModel model = new PostInBlogModel
@@ -65,11 +66,36 @@ namespace BlogHost.Web.Controllers
                     ItemsPerPage = PageSize,
                     TotalItems = posts.Count()
                 },
-                BlogId = blogId,
-                BlogName = blogName
+                BlogId = blogid,
+                BlogName = blogname,
+                UserEmail = useremail
             };
 
             return View(model);
+        }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(Post post, int blogId, string tags, string categoryname)
+        {
+            post.UrlSlug = post.Title;
+            if (string.IsNullOrEmpty(tags))
+                tags = "Common";
+            if (string.IsNullOrEmpty(categoryname))
+                categoryname = "Common";
+            post.Tags = new HashSet<Tag>();
+            //if (ModelState.IsValid)
+            {
+                post.BlogId = blogId;
+                post.Date = DateTime.Now;
+                Repository.AddPost(post, tags.Split(' '), categoryname);
+            }
+            return RedirectToAction("List");
         }
     }
 }

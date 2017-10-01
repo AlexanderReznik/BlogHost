@@ -14,5 +14,15 @@ namespace BlogHost.Domain.Concrete
         private readonly BlogContext _context = new BlogContext();
 
         public IQueryable<Blog> GetAllBlogs => _context.Blogs;
+
+        public void AddBlog(string userName, Blog blog)
+        {
+            User user = _context.Users.FirstOrDefault(u => u.Email == userName);
+            if(user == null)
+                return;
+            blog.UserId = user.ID;
+            _context.Blogs.Add(blog);
+            _context.SaveChanges();
+        }
     }
 }

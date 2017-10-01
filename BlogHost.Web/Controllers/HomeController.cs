@@ -9,14 +9,6 @@ namespace BlogHost.Web.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
-        {
-            BlogContext bc = new BlogContext();
-            
-            ViewBag.value = bc.Tags;
-            return View();
-        }
-
         public ActionResult About()
         {
             ViewBag.Message = "A simple blog application.";

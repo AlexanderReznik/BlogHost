@@ -9,7 +9,7 @@
             {
                 @*<li>@Html.ActionLink("Users edit", "UsersEdit", "Home")</li>*@
                 <li>
-                    @Html.ActionLink("Hello Admin, " + User.Identity.Name + "!", "List", "Post", routeValues: null, htmlAttributes: new { title = "Manage" })
+                    @Html.ActionLink("Moderate", "Index", "Admin", routeValues: null, htmlAttributes: new { title = "Manage" })
                 </li>
             }
             <li>

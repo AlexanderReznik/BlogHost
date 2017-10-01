@@ -18,9 +18,11 @@
         @Model.Text
     </p>
     <br/>
-    @foreach (var c in Model.Comments)
+    <H4>Comments</H4>
+    @foreach (var c in Model.Comments.OrderBy(c => c.Date))
     {
         Html.RenderPartial("_CommentPartial", c);
     }
+    @Html.ActionLink("Add comment", "Add", new { controller = "Comment", postid = Model.ID })
 </div>
 

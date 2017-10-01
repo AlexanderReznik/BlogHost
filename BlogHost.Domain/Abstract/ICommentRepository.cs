@@ -7,10 +7,9 @@ using BlogHost.Domain.Entities;
 
 namespace BlogHost.Domain.Abstract
 {
-    public interface IBlogRepository
+    public interface ICommentRepository
     {
-        IQueryable<Blog> GetAllBlogs { get; }
-
-        void AddBlog(string userName, Blog blog);
+        IQueryable<Comment> GetAllComments { get; }
+        void AddComment(Comment c, string email);
     }
 }

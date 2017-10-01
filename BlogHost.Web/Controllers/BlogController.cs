@@ -4,10 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BlogHost.Domain.Abstract;
+using BlogHost.Domain.Entities;
 using BlogHost.Web.Models;
 
 namespace BlogHost.Web.Controllers
 {
+    [Authorize]
     public class BlogController : Controller
     {
         private IBlogRepository Repository { get; }
@@ -36,6 +38,24 @@ namespace BlogHost.Web.Controllers
             };
 
             return View(model);
+        }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(Blog blog)
+        {
+            if (ModelState.IsValid)
+            {
+                blog.Date = DateTime.Now;
+                string userName = User.Identity.Name;
+                Repository.AddBlog(userName, blog);
+            }
+            return RedirectToAction("List");
         }
     }
 }

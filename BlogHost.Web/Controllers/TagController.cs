@@ -9,6 +9,7 @@ using BlogHost.Web.Models;
 
 namespace BlogHost.Web.Controllers
 {
+    [Authorize]
     public class TagController : Controller
     {
         private ITagRepository Repository { get; }
