@@ -1,0 +1,39 @@
+﻿@model IEnumerable<BlogHost.Domain.Entities.Comment>
+
+@{
+    ViewBag.Title = "Comments";
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Text)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.Username)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Text)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.Username)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditComment", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "DeleteComment", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

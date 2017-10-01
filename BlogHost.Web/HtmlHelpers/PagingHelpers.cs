@@ -23,7 +23,7 @@ namespace BlogHost.Web.HtmlHelpers
                 tag.MergeAttribute("href", pageUrl(i));
                 tag.InnerHtml = i.ToString();
                 if (i == pagingInfo.CurrentPage)
-                    tag.AddCssClass("selected");
+                    tag.AddCssClass("red");
                 result.Append(tag.ToString());
             }
 

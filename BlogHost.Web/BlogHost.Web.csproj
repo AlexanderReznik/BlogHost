@@ -216,6 +216,8 @@
     <Content Include="Views\Blog\Create.cshtml" />
     <Content Include="Views\Post\Create.cshtml" />
     <Content Include="Views\Comment\Add.cshtml" />
+    <Content Include="Views\Admin\Comments.cshtml" />
+    <Content Include="Views\Admin\EditComment.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

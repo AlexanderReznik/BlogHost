@@ -21,6 +21,35 @@ namespace BlogHost.Domain.Concrete
             _context.SaveChanges();
         }
 
+        public Comment GetById(int id) => _context.Comments.Find(id);
+
+        public void SaveComment(Comment comment)
+        {
+            if (comment.ID == 0)
+                _context.Comments.Add(comment);
+            else
+            {
+                Comment dbComment = _context.Comments.Find(comment.ID);
+                if (dbComment != null)
+                {
+                    dbComment.Text = comment.Text;
+                    dbComment.Date = comment.Date;
+                }
+            }
+            _context.SaveChanges();
+        }
+
+        public Comment DeleteComment(int id)
+        {
+            Comment comment = _context.Comments.Find(id);
+            if (comment != null)
+            {
+                _context.Comments.Remove(comment);
+                _context.SaveChanges();
+            }
+            return comment;
+        }
+
         private int GetUserId(string email) => _context.Users.FirstOrDefault(u => u.Email == email).ID;
 
     }

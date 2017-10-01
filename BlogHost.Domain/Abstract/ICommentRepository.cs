@@ -11,5 +11,8 @@ namespace BlogHost.Domain.Abstract
     {
         IQueryable<Comment> GetAllComments { get; }
         void AddComment(Comment c, string email);
+        Comment GetById(int id);
+        void SaveComment(Comment comment);
+        Comment DeleteComment(int id);
     }
 }

@@ -64,16 +64,27 @@ namespace BlogHost.Web.Controllers
 
         public ActionResult Comments()
         {
-            return View();
+            return View(CommentRepository.GetAllComments);
         }
 
-        #endregion
-
-        #region Users
-
-        public ActionResult Users()
+        public ActionResult EditComment(int id)
         {
-            return View();
+            Comment comment= CommentRepository.GetById(id);
+            return View(comment);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditComment(Comment comment)
+        {
+            CommentRepository.SaveComment(comment);
+            return RedirectToAction("Comments");
+        }
+
+        public ActionResult DeleteComment(int id)
+        {
+            Comment comment = CommentRepository.DeleteComment(id);
+            return RedirectToAction("Comments");
         }
 
         #endregion
